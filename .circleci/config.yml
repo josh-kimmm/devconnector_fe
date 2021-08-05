@@ -10,17 +10,17 @@ jobs:
           name: Show current branch
           command: |
             echo ${CURRENT_BRANCH}
-      - restore_cache: 
-          key:
-            - app-{{ checksum "package.json" }}
-            - app-
+#      - restore_cache: 
+#          key:
+#            - app-{{ checksum "package.json" }}
+#            - app-
       - run: 
           name: Install dependencies
           command: sudo npm install
-      - save_cache: 
-          paths:
-            - node_modules
-          key: app-{{ checksum "package.json" }}
+#      - save_cache: 
+#          paths:
+#            - node_modules
+#          key: app-{{ checksum "package.json" }}
       - run: 
           name: Build prod files
           command: |
@@ -45,17 +45,21 @@ jobs:
       - run:
           name: ssh into server
           command: ssh ubuntu@ec2-35-84-150-135.us-west-2.compute.amazonaws.com
-
 workflows:
   version: 2.1
   build-and-deploy:
     jobs:
-      - build
+      - build:
+          filters:
+            branches:
+              only: 
+                - production
       - deploy-to-aws-ec2:
-        requires:
-          - build
-        filters:
-          branches:
-            only: production
+          requires:
+            - build
+          filters:
+            branches:
+              only: 
+                - production
 
           
