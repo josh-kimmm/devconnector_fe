@@ -9,7 +9,7 @@ jobs:
       - run: 
           name: Show current branch
           command: |
-            echo ${CURRENT_BRANCH}
+            echo ${CIRCLE_BRANCH}
       - run: 
           name: Install dependencies
           command: sudo npm install
@@ -28,13 +28,13 @@ jobs:
             - "6a:ea:cc:7e:f4:00:09:5b:6b:cb:e2:04:8f:a7:cd:78"
       - run:
           name: Show current branch
-          command: echo ${CURRENT_BRANCH}
+          command: echo ${CIRCLE_BRANCH}
       - run:
           name: Download rsync
           command: sudo npm install rsync
       - run:
           name: ssh into server
-          command: yes yes | ssh -T ubuntu@ec2-35-84-150-135.us-west-2.compute.amazonaws.com
+          command: ssh -oStrictHostKeyChecking=no ubuntu@ec2-35-84-150-135.us-west-2.compute.amazonaws.com
 workflows:
   version: 2.1
   build-and-deploy:
