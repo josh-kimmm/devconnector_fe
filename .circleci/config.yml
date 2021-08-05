@@ -48,8 +48,8 @@ workflows:
       #        only: 
       #          - production
       - deploy-to-aws-ec2:
-          requires:
-            - build
+          #requires:
+          #  - build
           filters:
             branches:
               only: 
