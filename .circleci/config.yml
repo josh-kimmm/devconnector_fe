@@ -25,7 +25,6 @@ jobs:
           name: Build prod files
           command: |
             sudo npm run build
-  
   deploy-to-aws-ec2:
     docker:
       - image: circleci/node:13.12.0
@@ -44,7 +43,7 @@ jobs:
 
       - run:
           name: ssh into server
-          command: ssh ubuntu@ec2-35-84-150-135.us-west-2.compute.amazonaws.com
+          command: yes yes | ssh ubuntu@ec2-35-84-150-135.us-west-2.compute.amazonaws.com
 workflows:
   version: 2.1
   build-and-deploy:
