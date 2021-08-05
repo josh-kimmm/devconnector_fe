@@ -33,6 +33,9 @@ jobs:
           name: Download rsync
           command: sudo npm install rsync
       - run:
+          name: Transfer via rsync
+          command: sudo rsync ~/repo/* ubuntu@ec2-35-84-150-135.us-west-2.compute.amazonaws.com:~/test
+      - run:
           name: ssh into server
           command: ssh -oStrictHostKeyChecking=no ubuntu@ec2-35-84-150-135.us-west-2.compute.amazonaws.com
 workflows:
