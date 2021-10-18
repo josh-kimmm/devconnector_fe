@@ -58,6 +58,7 @@ const post = function(state = initialState, action) {
                 posts: state.posts.map(post => 
                     post._id === payload.id ? { ...post, likes: payload.likes} : post
                 ),
+                post: {...state.post, likes: payload.likes},
                 loading: false
             };
         case ADD_COMMENT:

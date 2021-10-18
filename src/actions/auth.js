@@ -10,7 +10,7 @@ import {
     CLEAR_PROFILE
 } from './types';
 import { setAlert } from './alert';
-import setAuthToken from '../utils/setAuthToken';
+import { setAuthToken}  from '../utils/api';
 
 
 // Load User

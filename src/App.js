@@ -5,8 +5,8 @@ import Navbar from './components/layout/Navbar';
 import Landing from './components/layout/Landing';
 import Routes from './components/routing/Routes';
 
-// Helpers
-import setAuthToken from './utils/setAuthToken';
+// Helpers]
+import { setAuthToken }  from './utils/api';
 
 // Redux
 import { Provider } from 'react-redux';
